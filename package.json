@@ -6,7 +6,10 @@
     "wiredep": "./wiredep-cli.js"
   },
   "description": "Wire Bower dependencies to your source code.",
-  "repository": "taptapship/wiredep",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taptapship/wiredep"
+  },
   "author": {
     "name": "Stephen Sawchuk",
     "email": "sawchuk@gmail.com"
@@ -31,7 +34,7 @@
     }
   ],
   "scripts": {
-    "test": "jshint *.js lib/*.js test/*.js && NODE_ENV=test mocha -R spec"
+    "test": "jshint lib/*.js test/*.js && NODE_ENV=test ./node_modules/.bin/mocha -R spec"
   },
   "dependencies": {
     "bower-config": "^0.5.0",
@@ -46,5 +49,31 @@
     "fs-extra": "^0.11.0",
     "jshint": "*",
     "mocha": "*"
-  }
+  },
+  "gitHead": "aa1508667c370663e8341c701d570179d644d2fd",
+  "bugs": {
+    "url": "https://github.com/taptapship/wiredep/issues"
+  },
+  "homepage": "https://github.com/taptapship/wiredep",
+  "_id": "wiredep@1.8.5",
+  "_shasum": "a4e9374b766920a36d6946665c937e486e5e3981",
+  "_from": "wiredep@^1.5.0",
+  "_npmVersion": "1.4.21",
+  "_npmUser": {
+    "name": "stephenplusplus",
+    "email": "sawchuk@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "stephenplusplus",
+      "email": "sawchuk@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "a4e9374b766920a36d6946665c937e486e5e3981",
+    "tarball": "http://registry.npmjs.org/wiredep/-/wiredep-1.8.5.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/wiredep/-/wiredep-1.8.5.tgz",
+  "readme": "ERROR: No README data found!"
 }

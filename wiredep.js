@@ -23,7 +23,6 @@ function wiredep(opts) {
   opts = opts || {};
 
   var cwd = opts.cwd ? $.path.resolve(opts.cwd) : process.cwd();
-console.log(opts);
   var config = module.exports.config = helpers.createStore();
 
   config.set
@@ -46,16 +45,12 @@ console.log(opts);
 
   $._.pluck(config.get('file-types'), 'detect').
     forEach(function (fileType) {
-//console.log('fileType');
-	//console.log(fileType);
       Object.keys(fileType).
         forEach(function (detectableFileType) {
           var detectableFileTypes = config.get('detectable-file-types');
 
           if (detectableFileTypes.indexOf(detectableFileType) === -1) {
             config.set('detectable-file-types', detectableFileTypes.concat(detectableFileType));
-			//console.log('detectableFileType');
-			//console.log(detectableFileType);
           }
         });
     });
@@ -86,21 +81,11 @@ console.log(opts);
 }
 
 function mergeFileTypesWithDefaults(optsFileTypes) {
-	//console.log('optsFileTypes');
-	//console.log(optsFileTypes);
   var fileTypes = $._.clone(fileTypesDefault, true);
 
   $._(optsFileTypes).each(function (fileTypeConfig, fileType) {
-	//console.log('fileTypeConfig');
-	//console.log(fileTypeConfig);
-	//console.log('fileType');
-	//console.log(fileType);
     fileTypes[fileType] = fileTypes[fileType] || {};
     $._.each(fileTypeConfig, function (config, configKey) {
-	//console.log('config');
-	//console.log(config);
-	//console.log('configKey');
-	//console.log(configKey);
       if ($._.isPlainObject(fileTypes[fileType][configKey])) {
         fileTypes[fileType][configKey] =
           $._.assign(fileTypes[fileType][configKey], config);
@@ -109,9 +94,6 @@ function mergeFileTypesWithDefaults(optsFileTypes) {
       }
     });
   });
-
-	////console.log('fileTypes');
-	//console.log(fileTypes);
   return fileTypes;
 }
 
@@ -119,7 +101,7 @@ function findBowerDirectory(cwd) {
   var directory = $.path.join(cwd, ($['bower-config'].read(cwd).directory || 'bower_components'));
 
   if (!$.fs.existsSync(directory)) {
-    //console.log($.chalk.red.bold('Cannot find where you keep your Bower packages.'));
+    console.log($.chalk.red.bold('Cannot find where you keep your Bower packages.'));
 
     process.exit();
   }

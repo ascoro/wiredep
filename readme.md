@@ -61,6 +61,32 @@ index.html modified.
 </html>
 ```
 
+## Filter files
+```js
+wiredep: {
+      app: {
+        src: ['<%= yeoman.app %>/index.html'],
+        ignorePath:  /\.\.\//,
+		fileTypes:{
+			html: {
+				detect: {
+				  'js-ModulesIWantToObfuscate': /<script.*src=['"]([^'"]+)ani([^'"]+)/gi,
+				  'js-ModulesIDoNotWantToObfuscat': /<script.*src=['"]([^'"]+)/gi
+				},
+				replace: {
+				  'js-ModulesIWantToObfuscate': '<script class="Ms" src="{{filePath}}"></script>',
+				  'js-ModulesIDoNotWantToObfuscat': '<script class="NoMs" src="{{filePath}}"></script>'
+				}
+			  }
+		},
+		filters:{
+		  'js-ModulesIWantToObfuscate': ['secure','!public'], //Files that contain secure but not public i.e. mymodules.secure.js
+		  'js-ModulesIDoNotWantToObfuscat': ['!secure'] //Files that do not contain secure i.e. mymodules.js or mymodules.public.js
+		}
+      }
+    },
+```
+
 
 ## Build Chain Integration
 
